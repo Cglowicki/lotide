@@ -32,10 +32,15 @@ const eqObjects = function(object1, object2) {
     
     let keys = objK1;
 
-    for (key of keys) {
-      if (eqArrays(objK1, objK2)) {
-        return true;
+    for (let key of keys) {
+      
+      let a = object1[key];
+      let b = object2[key];
+
+      if (Array.isArray(a) && Array.isArray(b)) {
+        return eqArrays(a, b);
       }
+      
       if (object1[key] !== object2[key]) {
       return false;
       }
